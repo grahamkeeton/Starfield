@@ -1,26 +1,55 @@
-//your code here
+
+NormalParticle normie = new NormalParticle();
+
 void setup()
 {
-	//your code here
+	size(500,500);
 }
+
 void draw()
 {
-	//your code here
+	normie.move();
+	normie.show();
+
 }
+
 class NormalParticle
 {
-	//your code here
+	int myColor;
+	double myX,myY,mySpe,myAng;
+	
+	NormalParticle(){
+
+	}
+
+	void move(){
+
+	}
+
+	void show(){
+
+
+	}
 }
+
 interface Particle
 {
-	//your code here
+	Particle(){
+
+	}
 }
+
 class OddballParticle //uses an interface
 {
-	//your code here
+	OddballParticle(){
+
+	}
 }
+
 class JumboParticle //uses inheritance
 {
-	//your code here
+	JumboParticle(){
+
+	}
 }
 
