@@ -1,15 +1,25 @@
 
 NormalParticle [] apt;
 OddballParticle [] toot;
+int a=250;
+int b=250;
 
 void setup()
 {
 	size(500,500);
-	background(0);
+	
 
-	apt = new NormalParticle[100];
+	apt = new NormalParticle[250];
 	for(int i=0;i<apt.length;i++){
-		apt[i] = new NormalParticle(250,250);
+		apt[i] = new NormalParticle(a,b);
+		if(a>500||a<500){
+		a=250;
+		b=250;
+	}
+		if(b>500||b<500){
+		b=250;
+		a=250;
+	}
 	}
 	toot = new OddballParticle[100];
 	for(int i=0;i<toot.length;i++){
@@ -21,6 +31,7 @@ void setup()
 void draw()
 {
 
+	background(0);
 	for (int i=0;i<toot.length;i++){
 		toot[i].move();
 		toot[i].show();
@@ -43,20 +54,20 @@ class NormalParticle
 
 		myX=x;
 		myY=y;
-		myAng=(float)(Math.random()*(2*Math.PI));
+		myAng=(float)(Math.random()*(1*Math.PI));
 		mySpe=(float)(Math.random()*7)-3;
 		myColor = 20;
 	}
 
 	void move(){
 
-		myX+=Math.cos(myAng)*(mySpe);
+	myX+=Math.cos(myAng)*(mySpe);
 		myY+=Math.sin(myAng)*(mySpe);
 
 	}
 
 	void show(){
-		fill(255,0,0);
+		fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
 		ellipse(myX,myY,10,10);
 
 	}
@@ -87,10 +98,7 @@ class OddballParticle //uses an interface
 	void show(){
 		fill(0,0,255);
 		ellipse(myX,myY,10,10);
-		if (myX>600&&myY>600){
-			myX=250;
-			myY=250;
-		}
+		
 	}
 
 }
