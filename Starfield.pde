@@ -1,41 +1,51 @@
 
 NormalParticle [] apt;
-OddballParticle tits = new OddballParticle(400,400);
-JumboParticle boobs = new JumboParticle(600,600);
+//OddballParticle kuku = new OddballParticle(400,400);
+//JumboParticle donezo = new JumboParticle(600,600);
 
-int a=250;
-int b=250;
+
+Particle[] colony;
+
 
 void setup()
 {
 	size(1000,1000);
 	
 
+	/*
 	apt = new NormalParticle[500];
 	for(int i=0;i<apt.length;i++){
 		apt[i] = new NormalParticle(500,500);
 			}
+		apt[0]= new OddballParticle();
+*/
+
 	
+		
+		colony = new Particle[300];
+		for(int i=0;i<colony.length;i++){
+		colony[i]= new NormalParticle(500,500);
+		
+}
+colony[0]=new OddballParticle((int)(Math.random()*1000),(int)(Math.random()*1000));
 }
 
 void draw()
 {
 
 
-	for (int i=0;i<apt.length;i++){
-		apt[i].move();
-		apt[i].show();
+	for (int i=0;i<colony.length;i++){
+		colony[i].move();
+		colony[i].show();
 		
 	}
 
-	tits.move();
-	tits.show();
-	boobs.move();
-	boobs.show();
+	//donezo.move();
+	//donezo.show();
 	
 }
 
-class NormalParticle
+class NormalParticle implements Particle
 {
 	int myColor;
 	float myX,myY,mySpe,myAng;
@@ -71,11 +81,11 @@ interface Particle
 	public void show(); 
 }
 
-class OddballParticle //uses an interface
+class OddballParticle implements Particle//uses an interface
 {
 	float myX, myY, myAng, mySpe;
 
-	OddballParticle(float x,float y){
+	OddballParticle(float x, float y){
 				
 				myX=x;
 				myY=y;
@@ -95,7 +105,11 @@ class OddballParticle //uses an interface
 	void show(){
 		
 		fill(255);
-		rect(myX,myY,30,30);
+		ellipse(myX,myY,40,40);
+		fill(0);
+		ellipse(myX-10,myY-10,5,5);
+		ellipse(myX+10,myY-10,5,5);
+		rect(myX-5,myY,10,10);
 		
 	}
 
